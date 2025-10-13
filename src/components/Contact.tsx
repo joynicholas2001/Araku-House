@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
-import { MapPin, Phone, Mail, Clock, Instagram } from "lucide-react";
+import { MapPin, Phone, Clock, Instagram } from "lucide-react";
 import { Button } from "../components/ui/button";
 
 const Contact = () => {
@@ -94,8 +94,13 @@ const Contact = () => {
                 <Phone className="h-4 w-4" />
                 <span>+91 99999 99999</span>
               </a>
-              <a href="mailto:hello@arakuhouse.com" className="flex items-center gap-2 text-foreground/80 hover:text-accent transition-colors">
-                <Mail className="h-4 w-4" />
+              <a
+                href="#"
+                onClick={(e) => e.preventDefault()}
+                className="flex items-center gap-2 text-foreground/80 hover:text-accent transition-colors cursor-default"
+                aria-disabled="true"
+                title="Email preview"
+              >
                 <span>hello@arakuhouse.com</span>
               </a>
             </CardContent>
