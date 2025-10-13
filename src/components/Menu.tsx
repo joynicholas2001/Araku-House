@@ -54,16 +54,16 @@ const Menu = () => {
         </div>
 
         <Tabs defaultValue="coffee" className="w-full max-w-6xl mx-auto">
-          <TabsList className="grid w-full grid-cols-3 mb-12">
-            <TabsTrigger value="coffee" className="text-base">
+          <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-0 mb-12">
+            <TabsTrigger value="coffee" className="text-sm sm:text-base">
               <Coffee className="mr-2 h-4 w-4" />
               Coffee
             </TabsTrigger>
-            <TabsTrigger value="food" className="text-base">
+            <TabsTrigger value="food" className="text-sm sm:text-base">
               <Utensils className="mr-2 h-4 w-4" />
               Curated Plates
             </TabsTrigger>
-            <TabsTrigger value="desserts" className="text-base">
+            <TabsTrigger value="desserts" className="text-sm sm:text-base">
               <Cake className="mr-2 h-4 w-4" />
               Signature Desserts
             </TabsTrigger>
@@ -85,7 +85,7 @@ const Menu = () => {
                 <Card
                   key={index}
                   tabIndex={0}
-                  className="transform-gpu transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-accent/30 hover:-translate-y-2 hover:scale-105 hover:shadow-strong"
+                  className="overflow-hidden transform-gpu transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-accent/30 md:hover:-translate-y-2 md:hover:scale-105 md:focus:-translate-y-2 md:focus:scale-105 md:hover:shadow-strong"
                 >
                   <CardHeader>
                     <div className="flex justify-between items-start">
@@ -105,7 +105,7 @@ const Menu = () => {
                 <Card
                   key={index}
                   tabIndex={0}
-                  className={`transform-gpu transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-accent/30 hover:-translate-y-2 hover:scale-105 hover:shadow-strong ${
+                  className={`overflow-hidden transform-gpu transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-accent/30 md:hover:-translate-y-2 md:hover:scale-105 md:focus:-translate-y-2 md:focus:scale-105 md:hover:shadow-strong ${
                     item.featured ? "md:col-span-2 bg-secondary/30" : ""
                   }`}
                 >
@@ -140,7 +140,7 @@ const Menu = () => {
                 <Card
                   key={index}
                   tabIndex={0}
-                  className={`transform-gpu transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-accent/30 hover:-translate-y-2 hover:scale-105 hover:shadow-strong ${
+                  className={`overflow-hidden transform-gpu transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-accent/30 md:hover:-translate-y-2 md:hover:scale-105 md:focus:-translate-y-2 md:focus:scale-105 md:hover:shadow-strong ${
                     item.featured ? "md:col-span-2 bg-secondary/30" : ""
                   }`}
                 >

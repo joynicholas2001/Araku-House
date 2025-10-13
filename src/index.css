@@ -17,7 +17,7 @@ All colors MUST be HSL.
   --popover-foreground: 25 40% 15%;
 
     /* Rich coffee brown */
-  --primary: 25 60% 10%; /* Adjusted for a much darker, richer coffee brown */
+  --primary: 25 60% 10%; 
   --primary-foreground: 35 25% 97%;
 
     /* Warm cream */
@@ -118,6 +118,13 @@ All colors MUST be HSL.
   @keyframes fadeIn {
     from {
       opacity: 0;
+
+/* Safety: hide any external badges like Lovable tagger if injected */
+[data-testid="lovable-badge"],
+.lovable-badge,
+[data-lovable-root] {
+  display: none !important;
+}
     }
     to {
       opacity: 1;
