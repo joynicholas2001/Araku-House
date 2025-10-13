@@ -54,7 +54,7 @@ const Footer = () => {
               <span className="sr-only">Instagram</span>
               <span>@arakuhouse</span>
             </a>
-            <p className="text-primary-foreground/60 text-sm mb-2">#arakuhouse</p>
+            <p className="text-primary-foreground/60 text-sm mb-2"></p>
             <address className="not-italic text-primary-foreground/80 text-sm">
               Above Dumont, opposite Loyola auditorium<br />
               Vijayawada
