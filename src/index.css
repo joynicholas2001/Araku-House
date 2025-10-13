@@ -125,6 +125,14 @@ All colors MUST be HSL.
 [data-lovable-root] {
   display: none !important;
 }
+/* Broader safety: hide any element with 'lovable' in common attributes (case-insensitive) */
+[class*="lovable" i],
+[id*="lovable" i],
+[aria-label*="lovable" i],
+[title*="lovable" i],
+a[href*="lovable" i] {
+  display: none !important;
+}
     }
     to {
       opacity: 1;
