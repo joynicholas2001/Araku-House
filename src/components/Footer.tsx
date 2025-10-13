@@ -31,7 +31,7 @@ const Footer = () => {
                 <a href="#menu" className="hover:text-accent transition-colors">Menu</a>
               </li>
               <li>
-                <a href="#gallery" className="hover:text-accent transition-colors">Gallery</a>
+                {/* Gallery section removed */}
               </li>
               <li>
                 <a href="#events" className="hover:text-accent transition-colors">Events</a>
