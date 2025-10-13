@@ -25,7 +25,7 @@ const Navigation = () => {
   return (
     <nav
       aria-label="Primary"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/95 backdrop-blur-md shadow-md`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-border/40 shadow-sm`}
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
@@ -50,7 +50,7 @@ const Navigation = () => {
                   e.preventDefault();
                   scrollToSection(item.id);
                 }}
-                className="text-foreground/80 hover:text-accent transition-colors font-medium"
+                className="text-foreground hover:text-accent transition-colors font-medium"
               >
                 {item.label}
               </a>
@@ -61,7 +61,7 @@ const Navigation = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden text-foreground"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
@@ -82,7 +82,7 @@ const Navigation = () => {
                   e.preventDefault();
                   scrollToSection(item.id);
                 }}
-                className="block w-full text-left py-3 text-foreground/80 hover:text-accent transition-colors font-medium"
+                className="block w-full text-left py-3 text-foreground hover:text-accent transition-colors font-medium"
               >
                 {item.label}
               </a>

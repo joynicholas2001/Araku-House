@@ -4,15 +4,14 @@ export default {
     "stylelint-config-tailwindcss",
     "stylelint-config-html",
   ],
-  customSyntax: "postcss-scss",
   overrides: [
+    {
+      files: ["*.css", "**/*.css"],
+      customSyntax: "postcss",
+    },
     {
       files: ["*.html", "**/*.html"],
       customSyntax: "postcss-html",
-    },
-    {
-      files: ["*.css", "**/*.css"],
-      customSyntax: "postcss-scss",
     },
   ],
   rules: {

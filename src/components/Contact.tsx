@@ -105,22 +105,6 @@ const Contact = () => {
             </CardContent>
           </Card>
         </div>
-
-        {/* Map Placeholder */}
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-muted rounded-xl overflow-hidden shadow-medium h-96 flex items-center justify-center">
-            <div className="text-center">
-              <MapPin className="h-16 w-16 text-accent mx-auto mb-4" />
-              <p className="text-foreground/60 mb-4">Interactive map coming soon</p>
-              <Button 
-                variant="outline"
-                onClick={() => window.open("https://maps.app.goo.gl/BdnfGG7781nt4ReJA", "_blank")}
-              >
-                View on Google Maps
-              </Button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

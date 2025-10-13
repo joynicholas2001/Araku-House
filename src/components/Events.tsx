@@ -23,7 +23,6 @@ const Events = () => {
       },
       {
         title: "Coffee Tasting Sessions",
-        date: "Coming Soon",
         description:
           "Join us for exclusive coffee tasting sessions where you'll learn about Araku's organic journey from bean to cup.",
         icon: Calendar,
@@ -43,14 +42,14 @@ const Events = () => {
           </p>
         </div>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <ul className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch gap-8 max-w-6xl mx-auto">
           {events.map((event, index) => {
             const Icon = event.icon;
             return (
-              <li key={index} className="list-none">
+              <li key={index} className="list-none h-full">
                 <Card
                   tabIndex={0}
-                  className={`transform-gpu transition-transform duration-300 motion-safe:animate-fade-in focus:outline-none focus:ring-2 focus:ring-accent/30 hover:-translate-y-2 hover:scale-105 hover:shadow-strong focus:-translate-y-2 focus:scale-105 ${
+                  className={`h-full min-h-[340px] md:min-h-[380px] flex flex-col transform-gpu transition-transform duration-300 motion-safe:animate-fade-in focus:outline-none focus:ring-2 focus:ring-accent/30 hover:-translate-y-2 hover:scale-105 hover:shadow-strong focus:-translate-y-2 focus:scale-105 ${
                     event.status === "upcoming" ? "border-accent border-2" : ""
                   }`}
                   style={{ animationDelay: `${index * 100}ms` }}
@@ -85,7 +84,7 @@ const Events = () => {
                       </p>
                     </CardDescription>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="mt-auto">
                     <p className="text-foreground/80 text-center">{event.description}</p>
                   </CardContent>
                 </Card>
@@ -94,12 +93,7 @@ const Events = () => {
           })}
         </ul>
 
-        <div className="mt-16 text-center bg-secondary/30 rounded-2xl p-8 max-w-3xl mx-auto">
-          <h3 className="text-2xl font-bold mb-4 text-primary">Stay Updated</h3>
-          <p className="text-foreground/80 mb-6">
-            Follow us on Instagram @arakuhouse to stay informed about upcoming events, special offers, and daily specials!
-          </p>
-        </div>
+
       </div>
     </section>
   );
