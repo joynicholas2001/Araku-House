@@ -95,11 +95,9 @@ const Contact = () => {
                 <span>+91 99999 99999</span>
               </a>
               <a
-                href="#"
-                onClick={(e) => e.preventDefault()}
-                className="flex items-center gap-2 text-foreground/80 hover:text-accent transition-colors cursor-default"
-                aria-disabled="true"
-                title="Email preview"
+                href="mailto:hello@arakuhouse.com"
+                className="flex items-center gap-2 text-foreground/80 hover:text-accent transition-colors"
+                title="Email us"
               >
                 <span>hello@arakuhouse.com</span>
               </a>
