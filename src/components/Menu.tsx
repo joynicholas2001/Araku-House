@@ -5,14 +5,17 @@ import { Coffee, Utensils, Cake } from "lucide-react";
 import pastaImage from "@/assets/pasta-special.jpg";
 import dessertImage from "@/assets/dessert-special.jpg";
 import coffeeImage from "@/assets/coffee-detail.jpg";
+import coffeeIcon from "@/assets/menu/coffee.svg";
+import plateIcon from "@/assets/menu/plate.svg";
+import dessertIcon from "@/assets/menu/dessert.svg";
 
 const Menu = () => {
   const coffeeItems = [
-    { name: "Araku Signature Brew", description: "100% organic Araku coffee, meticulously roasted", price: "180" },
-    { name: "Espresso", description: "Rich, bold, and smooth", price: "120" },
-    { name: "Cappuccino", description: "Perfect balance of espresso and steamed milk", price: "150" },
-    { name: "Cold Brew", description: "Smooth and refreshing, brewed for 12 hours", price: "170" },
-    { name: "Latte Art Special", description: "Beautifully crafted with organic milk", price: "160" },
+    { name: "Araku Signature Brew", description: "100% organic Araku coffee, meticulously roasted", price: "180", image: coffeeIcon },
+    { name: "Espresso", description: "Rich, bold, and smooth", price: "120", image: coffeeIcon },
+    { name: "Cappuccino", description: "Perfect balance of espresso and steamed milk", price: "150", image: coffeeIcon },
+    { name: "Cold Brew", description: "Smooth and refreshing, brewed for 12 hours", price: "170", image: coffeeIcon },
+    { name: "Latte Art Special", description: "Beautifully crafted with organic milk", price: "160", image: coffeeIcon },
   ];
 
   const foodItems = [
@@ -23,10 +26,10 @@ const Menu = () => {
       featured: true,
       image: pastaImage
     },
-    { name: "Avocado Toast", description: "Sourdough, fresh avocado, cherry tomatoes, feta", price: "220" },
-    { name: "Mediterranean Bowl", description: "Quinoa, hummus, roasted vegetables, tahini dressing", price: "260" },
-    { name: "Breakfast Platter", description: "Organic eggs, artisan bread, seasonal fruits", price: "240" },
-    { name: "Garden Fresh Salad", description: "Locally sourced greens with house dressing", price: "200" },
+    { name: "Avocado Toast", description: "Sourdough, fresh avocado, cherry tomatoes, feta", price: "220", image: plateIcon },
+    { name: "Mediterranean Bowl", description: "Quinoa, hummus, roasted vegetables, tahini dressing", price: "260", image: plateIcon },
+    { name: "Breakfast Platter", description: "Organic eggs, artisan bread, seasonal fruits", price: "240", image: plateIcon },
+    { name: "Garden Fresh Salad", description: "Locally sourced greens with house dressing", price: "200", image: plateIcon },
   ];
 
   const dessertItems = [
@@ -37,10 +40,10 @@ const Menu = () => {
       featured: true,
       image: dessertImage
     },
-    { name: "Tiramisu", description: "Classic Italian dessert with coffee-soaked layers", price: "160" },
-    { name: "Cheesecake", description: "Creamy New York style with berry compote", price: "170" },
-    { name: "Artisan Tart", description: "Seasonal fruit on buttery pastry", price: "150" },
-    { name: "Brownie Sundae", description: "Warm brownie with organic vanilla ice cream", price: "190" },
+    { name: "Tiramisu", description: "Classic Italian dessert with coffee-soaked layers", price: "160", image: dessertIcon },
+    { name: "Cheesecake", description: "Creamy New York style with berry compote", price: "170", image: dessertIcon },
+    { name: "Artisan Tart", description: "Seasonal fruit on buttery pastry", price: "150", image: dessertIcon },
+    { name: "Brownie Sundae", description: "Warm brownie with organic vanilla ice cream", price: "190", image: dessertIcon },
   ];
 
   return (
@@ -87,6 +90,16 @@ const Menu = () => {
                   tabIndex={0}
                   className="overflow-hidden transform-gpu transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-accent/30 md:hover:-translate-y-2 md:hover:scale-105 md:focus:-translate-y-2 md:focus:scale-105 md:hover:shadow-strong"
                 >
+                  {item.image && (
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="low"
+                      className="w-full h-32 object-contain bg-secondary/30 p-6 border-b"
+                    />
+                  )}
                   <CardHeader>
                     <div className="flex justify-between items-start">
                       <CardTitle className="text-xl">{item.name}</CardTitle>
@@ -117,6 +130,16 @@ const Menu = () => {
                       decoding="async"
                       fetchPriority="low"
                       className="w-full h-40 md:h-64 object-cover rounded-t-xl"
+                    />
+                  )}
+                  {!item.featured && item.image && (
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="low"
+                      className="w-full h-32 object-contain bg-secondary/30 p-6 border-b"
                     />
                   )}
                   <CardHeader>
@@ -152,6 +175,16 @@ const Menu = () => {
                       decoding="async"
                       fetchPriority="low"
                       className="w-full h-40 md:h-64 object-cover rounded-t-xl"
+                    />
+                  )}
+                  {!item.featured && item.image && (
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="low"
+                      className="w-full h-32 object-contain bg-secondary/30 p-6 border-b"
                     />
                   )}
                   <CardHeader>
