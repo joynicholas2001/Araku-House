@@ -1,6 +1,7 @@
 import React from "react";
 // Update the import path below if your Button component is located elsewhere
 import { Button } from "./ui/button";
+import coffeeBg from "@/assets/coffee-detail.jpg";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -11,14 +12,24 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+
+      {/* Background: blurred coffee beans with subtle dark overlay for readability */}
+      <div className="absolute inset-0">
+        <div
+          className="absolute inset-0 bg-cover bg-center scale-105 blur-md"
+          style={{ backgroundImage: `url(${coffeeBg})` }}
+          aria-hidden
+        />
+        <div className="absolute inset-0 bg-black/60" aria-hidden />
+      </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center animate-fade-in">
-        <h1 className="text-5xl md:text-7xl lg:text-8xl text-white mb-6">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl text-white mb-6 font-serif tracking-tight drop-shadow-md">
           Araku House
         </h1>
-        <p className="text-xl md:text-2xl lg:text-3xl text-white mb-4 font-light">
+        <p className="text-xl md:text-2xl lg:text-3xl text-white/90 mb-4 font-light drop-shadow">
           Cafe & Organic Store
         </p>
         <div className="flex flex-wrap justify-center gap-3 text-white text-sm md:text-base mb-8">
@@ -26,7 +37,7 @@ const Hero = () => {
           <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">Curated Plates</span>
           <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">Signature Desserts</span>
         </div>
-        <p className="text-2xl md:text-3xl text-white mb-12 font-serif italic">
+        <p className="text-2xl md:text-3xl text-white mb-12 font-serif italic drop-shadow">
           &#34;Brew Local, Take Global&#34;
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
