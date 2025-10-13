@@ -1,16 +1,30 @@
 import React from "react";
 import { Instagram } from "lucide-react";
-import heroImage from "@/assets/hero-cafe.jpg";
-import coffeeImage from "@/assets/coffee-detail.jpg";
-import pastaImage from "@/assets/pasta-special.jpg";
-import dessertImage from "@/assets/dessert-special.jpg";
 
 const Gallery = () => {
-  const images = [
-    { src: heroImage, alt: "Araku House Interior" },
-    { src: coffeeImage, alt: "Artisan Coffee" },
-    { src: pastaImage, alt: "Special Pasta" },
-    { src: dessertImage, alt: "Signature Dessert" },
+  // Instagram posts to link out to. Thumbnails below are local placeholders for fast loading.
+  // If you want live Instagram thumbnails, we can switch to official embeds or a server-side fetch later.
+  const posts = [
+    {
+      href: "https://www.instagram.com/arakuhouse/p/DPi8bfIEV6z/",
+      src: "https://www.instagram.com/p/DPi8bfIEV6z/media/?size=l",
+      alt: "Araku House Interior (Instagram)",
+    },
+    {
+      href: "https://www.instagram.com/pictures_window/p/DOyHQt1CJuk/",
+      src: "https://www.instagram.com/p/DOyHQt1CJuk/media/?size=l",
+      alt: "Artisan Coffee (Instagram)",
+    },
+    {
+      href: "https://www.instagram.com/arakuhouse/p/DPGcn4_Edj-/",
+      src: "https://www.instagram.com/p/DPGcn4_Edj-/media/?size=l",
+      alt: "Special Pasta (Instagram)",
+    },
+    {
+      href: "https://www.instagram.com/arakuhouse/p/DPNr8CoEZcO/",
+      src: "https://www.instagram.com/p/DPNr8CoEZcO/media/?size=l",
+      alt: "Signature Dessert (Instagram)",
+    },
   ];
 
   return (
@@ -33,24 +47,28 @@ const Gallery = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {images.map((image, index) => (
-            <div
+          {posts.map((post, index) => (
+            <a
               key={index}
+              href={post.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative overflow-hidden rounded-xl shadow-medium hover:shadow-strong transition-all duration-300 aspect-square animate-fade-in"
               style={{ animationDelay: `${index * 100}ms` }}
+              aria-label={`Open Instagram post: ${post.alt}`}
             >
               <img
-                src={image.src}
-                alt={image.alt}
+                src={post.src}
+                alt={post.alt}
                 loading={index > 1 ? "lazy" : "eager"}
                 decoding="async"
                 fetchPriority={index === 0 ? "high" : "low"}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <p className="text-background font-semibold">{image.alt}</p>
+                <p className="text-background font-semibold">View on Instagram</p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
 
