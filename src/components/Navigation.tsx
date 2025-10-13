@@ -35,9 +35,10 @@ const Navigation = () => {
               e.preventDefault();
               scrollToSection("home");
             }}
-            className="text-2xl font-bold text-foreground hover:text-accent transition-colors"
+            className="flex items-center gap-3 text-foreground hover:text-accent transition-colors"
+            aria-label="Araku House Home"
           >
-            Araku House
+            <span className="text-xl md:text-2xl font-bold leading-none">Araku House</span>
           </a>
 
           {/* Desktop Navigation */}
