@@ -1,5 +1,5 @@
 import React from "react";
-import { Instagram, Heart } from "lucide-react";
+import { Instagram } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -63,12 +63,8 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-primary-foreground/20 pt-8 text-center">
-          <p className="text-primary-foreground/60 text-sm flex items-center justify-center gap-2">
-            <span>© {currentYear} Araku House.</span>
-            <span className="inline-flex items-center" aria-hidden>
-              Made with <Heart className="h-4 w-4 text-accent fill-accent ml-2" />
-            </span>
-            <span className="sr-only">for coffee lovers</span>
+          <p className="text-primary-foreground/60 text-sm">
+            © {currentYear} Araku House. All rights reserved.
           </p>
         </div>
       </div>
