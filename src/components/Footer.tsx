@@ -4,6 +4,32 @@ import { Instagram } from "lucide-react";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const handleInstagramClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const username = "arakuhouse";
+    const webUrl = "https://www.instagram.com/arakuhouse?igsh=MXAwd3dvMzg2cmd3OQ==";
+    const appUrl = `instagram://user?username=${username}`;
+
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+      // Try to open the Instagram app; if it fails, fall back to web after a short delay.
+      const fallback = setTimeout(() => {
+        window.open(webUrl, "_blank");
+      }, 700);
+      // Attempt deep link
+      window.location.href = appUrl;
+      // Extra safety fallback if the document stays visible
+      setTimeout(() => {
+        if (!document.hidden) {
+          window.open(webUrl, "_blank");
+        }
+        clearTimeout(fallback);
+      }, 1000);
+    } else {
+      window.open(webUrl, "_blank");
+    }
+  };
+
   return (
     <footer className="bg-primary text-primary-foreground py-12">
       <div className="container mx-auto px-4">
@@ -45,9 +71,10 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Connect With Us</h4>
             <a
-              href="https://www.instagram.com/arakuhouse"
+              href="https://www.instagram.com/arakuhouse?igsh=MXAwd3dvMzg2cmd3OQ=="
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleInstagramClick}
               className="inline-flex items-center gap-2 text-primary-foreground/80 hover:text-accent transition-colors mb-4"
             >
               <Instagram className="h-5 w-5" aria-hidden />

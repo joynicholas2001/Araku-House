@@ -4,6 +4,27 @@ import { MapPin, Phone, Mail, Clock, Instagram } from "lucide-react";
 import { Button } from "../components/ui/button";
 
 const Contact = () => {
+  const openInstagram = () => {
+    const username = "arakuhouse";
+    const webUrl = "https://www.instagram.com/arakuhouse?igsh=MXAwd3dvMzg2cmd3OQ==";
+    const appUrl = `instagram://user?username=${username}`;
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+      const fallback = setTimeout(() => {
+        window.open(webUrl, "_blank");
+      }, 700);
+      window.location.href = appUrl;
+      setTimeout(() => {
+        if (!document.hidden) {
+          window.open(webUrl, "_blank");
+        }
+        clearTimeout(fallback);
+      }, 1000);
+    } else {
+      window.open(webUrl, "_blank");
+    }
+  };
+
   return (
     <section id="contact" className="py-20 md:py-32 bg-secondary/30">
       <div className="container mx-auto px-4">
@@ -93,7 +114,7 @@ const Contact = () => {
               </p>
               <Button 
                 variant="default"
-                onClick={() => window.open("https://www.instagram.com/arakuhouse", "_blank")}
+                onClick={openInstagram}
                 className="w-full"
               >
                 <Instagram className="mr-2 h-4 w-4" />
