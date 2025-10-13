@@ -4,7 +4,7 @@ import Navigation from "../components/Navigation";
 import Hero from "../components/Hero";
 import About from "../components/About";
 import Menu from "../components/Menu";
-import Gallery from "../components/Gallery";
+import InstagramSection from "../components/Instagram";
 import Events from "../components/Events";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
@@ -16,7 +16,7 @@ const Index = () => {
       <Hero />
       <About />
       <Menu />
-      <Gallery />
+  <InstagramSection />
       <Events />
       <Contact />
       <Footer />
