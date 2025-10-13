@@ -54,7 +54,7 @@ const Menu = () => {
         </div>
 
         <Tabs defaultValue="coffee" className="w-full max-w-6xl mx-auto">
-          <TabsList className="grid w-full grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-0 mb-12">
+          <TabsList className="w-full flex flex-col sm:grid sm:grid-cols-3 gap-2 sm:gap-0 mb-12">
             <TabsTrigger value="coffee" className="text-sm sm:text-base">
               <Coffee className="mr-2 h-4 w-4" />
               Coffee
@@ -148,7 +148,10 @@ const Menu = () => {
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-full h-64 object-cover rounded-t-xl"
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="low"
+                      className="w-full h-40 md:h-64 object-cover rounded-t-xl"
                     />
                   )}
                   <CardHeader>
