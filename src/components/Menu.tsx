@@ -1,7 +1,8 @@
 import React from "react";
 import { Card, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
-import { Coffee, Utensils, Cake } from "lucide-react";
+import { Button } from "../components/ui/button";
+import { Coffee, Utensils, Cake, ArrowRight } from "lucide-react";
 import pastaImage from "@/assets/pasta-special.jpg";
 import dessertImage from "@/assets/dessert-special.jpg";
 import coffeeImage from "@/assets/coffee-detail.jpg";
@@ -202,6 +203,21 @@ const Menu = () => {
             </div>
           </TabsContent>
         </Tabs>
+
+        {/* View All Menu Button */}
+        <div className="text-center mt-12 animate-fade-in">
+          <Button
+            size="lg"
+            onClick={() => window.location.href = '/menu'}
+            className="text-lg bg-accent hover:bg-accent/90 text-white px-8 py-6 shadow-strong"
+          >
+            View Complete Menu
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
+          <p className="text-muted-foreground mt-4">
+            Explore our full menu with all categories, prices, and options
+          </p>
+        </div>
       </div>
     </section>
   );
