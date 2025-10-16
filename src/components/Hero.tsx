@@ -1,7 +1,7 @@
 import React from "react";
 // Update the import path below if your Button component is located elsewhere
 import { Button } from "./ui/button";
-import coffeeBg from "@/assets/coffee-detail.jpg";
+import heroCafeBg from "@/assets/hero-cafe.jpg";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -14,30 +14,30 @@ const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
 
-      {/* Background: blurred coffee beans with subtle dark overlay for readability */}
+      {/* Background: coffee shop atmosphere with enhanced overlay for text visibility */}
       <div className="absolute inset-0">
         <div
-          className="absolute inset-0 bg-cover bg-center scale-105 blur-md"
-          style={{ backgroundImage: `url(${coffeeBg})` }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${heroCafeBg})` }}
           aria-hidden
         />
-        <div className="absolute inset-0 bg-black/60" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70" aria-hidden />
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center animate-fade-in">
-        <h1 className="text-5xl md:text-7xl lg:text-8xl text-white mb-6 font-serif tracking-tight drop-shadow-md">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl text-white mb-6 font-serif tracking-tight drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]">
           Araku House
         </h1>
-        <p className="text-xl md:text-2xl lg:text-3xl text-white/90 mb-4 font-light drop-shadow">
+        <p className="text-xl md:text-2xl lg:text-3xl text-white mb-4 font-light drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
           Cafe & Organic Store
         </p>
         <div className="flex flex-wrap justify-center gap-3 text-white text-sm md:text-base mb-8">
-          <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">100% Organic Coffee</span>
-          <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">Curated Plates</span>
-          <span className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">Signature Desserts</span>
+          <span className="bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30 drop-shadow-lg">100% Organic Coffee</span>
+          <span className="bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30 drop-shadow-lg">Curated Plates</span>
+          <span className="bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30 drop-shadow-lg">Signature Desserts</span>
         </div>
-        <p className="text-2xl md:text-3xl text-white mb-12 font-serif italic drop-shadow">
+        <p className="text-2xl md:text-3xl text-white mb-12 font-serif italic drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]">
           &#34;Brew Local, Take Global&#34;
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
@@ -45,7 +45,7 @@ const Hero = () => {
             variant="outline"
             size="lg"
             onClick={() => scrollToSection("menu")}
-            className="text-lg bg-white/10 backdrop-blur-sm border-white/40 text-white hover:bg-white/20"
+            className="text-lg bg-black/30 backdrop-blur-sm border-white/60 text-white hover:bg-white/20 hover:border-white shadow-xl"
           >
             View Menu
           </Button>
@@ -53,7 +53,7 @@ const Hero = () => {
             variant="outline"
             size="lg"
             onClick={() => scrollToSection("contact")}
-            className="text-lg bg-white/10 backdrop-blur-sm border-white/40 text-white hover:bg-white/20"
+            className="text-lg bg-black/30 backdrop-blur-sm border-white/60 text-white hover:bg-white/20 hover:border-white shadow-xl"
           >
             Visit Us
           </Button>
