@@ -12,11 +12,37 @@ import dessertIcon from "@/assets/menu/dessert.svg";
 
 const Menu = () => {
   const coffeeItems = [
-    { name: "Araku Signature Brew", description: "100% organic Araku coffee, meticulously roasted", price: "180", image: coffeeIcon },
-    { name: "Espresso", description: "Rich, bold, and smooth", price: "120", image: coffeeIcon },
-    { name: "Cappuccino", description: "Perfect balance of espresso and steamed milk", price: "150", image: coffeeIcon },
-    { name: "Cold Brew", description: "Smooth and refreshing, brewed for 12 hours", price: "170", image: coffeeIcon },
-    { name: "Latte Art Special", description: "Beautifully crafted with organic milk", price: "160", image: coffeeIcon },
+    { 
+      name: "Araku Signature Brew", 
+      description: "100% organic Araku coffee, meticulously roasted", 
+      price: "180", 
+      image: coffeeImage,
+      featured: true
+    },
+    { 
+      name: "Espresso", 
+      description: "Rich, bold, and smooth", 
+      price: "120", 
+      image: coffeeIcon 
+    },
+    { 
+      name: "Cappuccino", 
+      description: "Perfect balance of espresso and steamed milk", 
+      price: "150", 
+      image: coffeeIcon 
+    },
+    { 
+      name: "Cold Brew", 
+      description: "Smooth and refreshing, brewed for 12 hours", 
+      price: "170", 
+      image: coffeeIcon 
+    },
+    { 
+      name: "Latte Art Special", 
+      description: "Beautifully crafted with organic milk", 
+      price: "160", 
+      image: coffeeIcon 
+    },
   ];
 
   const foodItems = [
@@ -115,23 +141,25 @@ const Menu = () => {
 
           <TabsContent value="coffee" className="animate-fade-in">
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="md:col-span-2 mb-4">
-                <img
-                  src={coffeeImage}
-                  alt="Coffee at Araku House"
-                  loading="lazy"
-                  decoding="async"
-                  fetchPriority="low"
-                  className="w-full h-48 md:h-64 object-cover rounded-xl shadow-medium"
-                />
-              </div>
               {coffeeItems.map((item, index) => (
                 <Card
                   key={index}
                   tabIndex={0}
-                  className="overflow-hidden transform-gpu transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-accent/30 md:hover:-translate-y-2 md:hover:scale-105 md:focus:-translate-y-2 md:focus:scale-105 md:hover:shadow-strong"
+                  className={`overflow-hidden transform-gpu transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-accent/30 md:hover:-translate-y-2 md:hover:scale-105 md:focus:-translate-y-2 md:focus:scale-105 md:hover:shadow-strong ${
+                    item.featured ? "md:col-span-2 bg-secondary/30" : ""
+                  }`}
                 >
-                  {item.image && (
+                  {item.featured && item.image && (
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="low"
+                      className="w-full h-40 md:h-64 object-cover rounded-t-xl"
+                    />
+                  )}
+                  {!item.featured && item.image && (
                     <img
                       src={item.image}
                       alt={item.name}
@@ -143,7 +171,10 @@ const Menu = () => {
                   )}
                   <CardHeader>
                     <div className="flex justify-between items-start">
-                      <CardTitle className="text-xl">{item.name}</CardTitle>
+                      <CardTitle className={item.featured ? "text-2xl" : "text-xl"}>
+                        {item.name}
+                        {item.featured && <span className="ml-2 text-accent text-sm">★ Featured</span>}
+                      </CardTitle>
                       <span className="text-accent font-bold">₹{item.price}</span>
                     </div>
                     <CardDescription>{item.description}</CardDescription>
