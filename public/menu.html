@@ -3,21 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Menu - Araku House</title>
+    <title>Our Menu — Araku House</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         :root {
             --primary: hsl(24, 45%, 25%);
             --secondary: hsl(30, 35%, 90%);
             --accent: hsl(30, 70%, 50%);
             --background: hsl(0, 0%, 100%);
             --foreground: hsl(24, 20%, 15%);
-            --muted: hsl(30, 20%, 70%);
+            --subtitle-green: hsl(120, 50%, 40%);
+            --subtitle-red: hsl(0, 70%, 50%);
         }
 
         body {
@@ -38,15 +34,6 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
         .nav-brand {
             font-size: 1.5rem;
             font-weight: bold;
@@ -54,16 +41,11 @@
             text-decoration: none;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
         .nav-links a {
             color: var(--foreground);
             text-decoration: none;
             font-weight: 500;
+            margin-left: 2rem;
             transition: color 0.3s;
         }
 
@@ -75,140 +57,81 @@
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, hsl(24, 45%, 35%) 100%);
             color: white;
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
             text-align: center;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
             font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 1rem;
-        }
-
-        .hero-note {
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 8px;
-            padding: 1rem;
-            max-width: 800px;
-            margin: 2rem auto 0;
-            font-size: 1rem;
         }
 
         /* Quick Navigation */
         .quick-nav {
             background-color: var(--secondary);
-            padding: 1.5rem;
-            text-align: center;
+            padding: 1rem;
+            position: sticky;
+            top: 70px;
+            z-index: 999;
             border-bottom: 2px solid var(--accent);
         }
 
-        .quick-nav h2 {
-            font-size: 1.2rem;
+        .quick-nav a {
             color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .quick-nav-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .quick-nav-btn {
-            background-color: white;
-            color: var(--primary);
-            padding: 0.75rem 1.5rem;
-            border: 2px solid var(--accent);
-            border-radius: 8px;
             text-decoration: none;
-            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border: 2px solid transparent;
+            border-radius: 8px;
             transition: all 0.3s;
-            cursor: pointer;
+            font-weight: 600;
         }
 
-        .quick-nav-btn:hover {
+        .quick-nav a:hover,
+        .quick-nav a.active {
             background-color: var(--accent);
             color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border-color: var(--accent);
         }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-        }
-
-        /* Main Section */
-        .menu-section {
-            margin-bottom: 4rem;
-            scroll-margin-top: 80px;
-        }
-
+        /* Section Title */
         .section-title {
             font-size: 2.5rem;
             color: var(--primary);
             text-align: center;
-            margin-bottom: 2rem;
+            margin: 3rem 0 2rem;
             padding-bottom: 1rem;
             border-bottom: 3px solid var(--accent);
+            font-weight: 700;
         }
 
-        /* Category Card */
-        .category-card {
-            background-color: white;
-            border: 1px solid var(--secondary);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: all 0.3s;
+        /* Subtitle (Category) */
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--subtitle-green);
+            font-weight: 700;
+            margin: 2rem 0 1rem;
+            padding-left: 0.5rem;
+            border-left: 4px solid var(--subtitle-green);
         }
 
-        .category-card:hover {
-            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
-            transform: translateY(-4px);
-        }
-
-        .category-title {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--secondary);
-        }
-
-        /* Menu Items */
-        .menu-items {
-            display: grid;
-            gap: 0.75rem;
-        }
-
-        .menu-item {
+        /* Menu Item Row */
+        .menu-item-row {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
-            transition: background-color 0.3s;
+            align-items: baseline;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--secondary);
         }
 
-        .menu-item:hover {
-            background-color: var(--secondary);
+        .menu-item-row:hover {
+            background-color: rgba(0,0,0,0.02);
         }
 
         .item-name {
+            flex: 1;
             font-weight: 500;
             color: var(--foreground);
-            flex: 1;
         }
 
         .item-price {
@@ -216,97 +139,50 @@
             color: var(--accent);
             font-size: 1.1rem;
             margin-left: 1rem;
+            white-space: nowrap;
         }
 
         /* Footer */
         footer {
             background-color: var(--primary);
             color: white;
-            padding: 3rem 2rem 1rem;
+            padding: 2rem 0 1rem;
             margin-top: 4rem;
         }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
+        footer h3 {
             color: var(--accent);
-            margin-bottom: 1rem;
             font-size: 1.2rem;
+            margin-bottom: 1rem;
         }
 
-        .footer-section p,
-        .footer-section a {
+        footer p, footer a {
             color: rgba(255,255,255,0.8);
             text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
         }
 
-        .footer-section a:hover {
+        footer a:hover {
             color: var(--accent);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            color: rgba(255,255,255,0.6);
-        }
-
-        .footer-note {
-            background-color: rgba(255,255,255,0.1);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            text-align: center;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
             .section-title {
                 font-size: 2rem;
             }
-
-            .category-title {
-                font-size: 1.4rem;
+            .subtitle {
+                font-size: 1.2rem;
             }
-
-            .category-card {
-                padding: 1.5rem;
+            .quick-nav {
+                overflow-x: auto;
             }
-
-            .quick-nav-buttons {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .menu-item {
+            .menu-item-row {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 0.25rem;
             }
-
             .item-price {
                 margin-left: 0;
+                margin-top: 0.25rem;
             }
         }
     </style>
@@ -314,15 +190,17 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <div class="nav-container">
-            <a href="/" class="nav-brand">Araku House</a>
-            <ul class="nav-links">
-                <li><a href="/#home">Home</a></li>
-                <li><a href="/#about">About</a></li>
-                <li><a href="/menu.html">Our Menu</a></li>
-                <li><a href="/#events">Events</a></li>
-                <li><a href="/#contact">Visit Us</a></li>
-            </ul>
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="/" class="nav-brand">Araku House</a>
+                <div class="nav-links">
+                    <a href="/#home">Home</a>
+                    <a href="/#about">About</a>
+                    <a href="/menu.html">Our Menu</a>
+                    <a href="/#events">Events</a>
+                    <a href="/#contact">Visit Us</a>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -330,19 +208,17 @@
     <section class="hero">
         <h1>Our Menu</h1>
         <p>Crafted with love, sourced with care, served with pride</p>
-        <div class="hero-note">
-            <p>All our dishes are freshly prepared after you order. Please allow a minimum of 20 minutes for service so you can enjoy your food hot and at its best.</p>
-        </div>
     </section>
 
     <!-- Quick Navigation -->
     <div class="quick-nav">
-        <h2>Jump to Section</h2>
-        <div class="quick-nav-buttons">
-            <a href="#coffee-more" class="quick-nav-btn">Coffee & More</a>
-            <a href="#chillers" class="quick-nav-btn">Chillers</a>
-            <a href="#breads" class="quick-nav-btn">Breads</a>
-            <a href="#platters" class="quick-nav-btn">Platters</a>
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+                <a href="#coffee-and-more" class="quick-link">Coffee & More</a>
+                <a href="#chillers" class="quick-link">Chillers</a>
+                <a href="#breads" class="quick-link">Breads</a>
+                <a href="#platters" class="quick-link">Platters</a>
+            </div>
         </div>
     </div>
 
@@ -350,417 +226,553 @@
     <div class="container">
         
         <!-- SECTION 1: COFFEE & MORE -->
-        <section id="coffee-more" class="menu-section">
+        <section id="coffee-and-more">
             <h2 class="section-title">COFFEE & MORE</h2>
 
-            <!-- Cappuccino -->
-            <div class="category-card">
-                <h3 class="category-title">Cappuccino</h3>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <span class="item-name">Cappuccino</span>
-                        <span class="item-price">₹120</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Hazelnut Cappuccino</span>
-                        <span class="item-price">₹140</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Caramel Cappuccino</span>
-                        <span class="item-price">₹140</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Vanilla Cappuccino</span>
-                        <span class="item-price">₹140</span>
-                    </div>
-                </div>
+            <!-- CAPPUCCINO -->
+            <h3 class="subtitle">CAPPUCCINO</h3>
+            <div class="menu-item-row">
+                <span class="item-name">Classic Cappuccino</span>
+                <span class="item-price">₹179</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Vanilla Cappuccino</span>
+                <span class="item-price">₹199</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Hazelnut Cappuccino</span>
+                <span class="item-price">₹209</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Caramel Cappuccino</span>
+                <span class="item-price">₹209</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Irish Cappuccino</span>
+                <span class="item-price">₹209</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Cinnamon Cappuccino</span>
+                <span class="item-price">₹219</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Nutella Cappuccino</span>
+                <span class="item-price">₹229</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Pistachio Cappuccino</span>
+                <span class="item-price">₹249</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Lotus Biscoff Cappuccino</span>
+                <span class="item-price">₹249</span>
             </div>
 
-            <!-- Latte -->
-            <div class="category-card">
-                <h3 class="category-title">Latte</h3>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <span class="item-name">Cafe Latte</span>
-                        <span class="item-price">₹130</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Hazelnut Latte</span>
-                        <span class="item-price">₹150</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Caramel Latte</span>
-                        <span class="item-price">₹150</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Vanilla Latte</span>
-                        <span class="item-price">₹150</span>
-                    </div>
-                </div>
+            <!-- LATTES -->
+            <h3 class="subtitle">LATTES</h3>
+            <div class="menu-item-row">
+                <span class="item-name">Classic Latte</span>
+                <span class="item-price">₹179</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Vanilla Latte</span>
+                <span class="item-price">₹199</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Hazelnut Latte</span>
+                <span class="item-price">₹209</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Caramel Latte</span>
+                <span class="item-price">₹209</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Irish Latte</span>
+                <span class="item-price">₹209</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Cinnamon Latte</span>
+                <span class="item-price">₹219</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Nutella Latte</span>
+                <span class="item-price">₹229</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Pistachio Latte</span>
+                <span class="item-price">₹249</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Lotus Biscoff Latte</span>
+                <span class="item-price">₹249</span>
             </div>
 
-            <!-- Espresso -->
-            <div class="category-card">
-                <h3 class="category-title">Espresso</h3>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <span class="item-name">Espresso Single Shot</span>
-                        <span class="item-price">₹100</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Espresso Double Shot</span>
-                        <span class="item-price">₹130</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Americano</span>
-                        <span class="item-price">₹120</span>
-                    </div>
-                </div>
+            <!-- MOCHAS / FLAT WHITE -->
+            <h3 class="subtitle">MOCHAS / FLAT WHITE</h3>
+            <div class="menu-item-row">
+                <span class="item-name">Café Mocha</span>
+                <span class="item-price">₹209</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">White Chocolate Mocha</span>
+                <span class="item-price">₹219</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Lotus Biscoff Mocha</span>
+                <span class="item-price">₹229</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Classic Flat White</span>
+                <span class="item-price">₹209</span>
             </div>
 
-            <!-- Frappuccino -->
-            <div class="category-card">
-                <h3 class="category-title">Frappuccino</h3>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <span class="item-name">Classic Coffee Frappuccino</span>
-                        <span class="item-price">₹160</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Mocha Frappuccino</span>
-                        <span class="item-price">₹180</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Caramel Frappuccino</span>
-                        <span class="item-price">₹180</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Vanilla Frappuccino</span>
-                        <span class="item-price">₹180</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Hazelnut Frappuccino</span>
-                        <span class="item-price">₹180</span>
-                    </div>
-                </div>
+            <!-- AMERICANO & TEA -->
+            <h3 class="subtitle">AMERICANO & TEA</h3>
+            <div class="menu-item-row">
+                <span class="item-name">Classic Americano</span>
+                <span class="item-price">₹149</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Vietnamese Americano</span>
+                <span class="item-price">₹179</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Iced Americano</span>
+                <span class="item-price">₹159</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Green Tea</span>
+                <span class="item-price">₹119</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Lemon Tea</span>
+                <span class="item-price">₹119</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Extra Espresso</span>
+                <span class="item-price">₹39</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Almond/Oat Milk (Add-on)</span>
+                <span class="item-price">₹60</span>
             </div>
 
-            <!-- Hot Chocolate & Mochas -->
-            <div class="category-card">
-                <h3 class="category-title">Hot Chocolate & Mochas</h3>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <span class="item-name">Classic Hot Chocolate</span>
-                        <span class="item-price">₹140</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">White Hot Chocolate</span>
-                        <span class="item-price">₹150</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Cafe Mocha</span>
-                        <span class="item-price">₹150</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">White Cafe Mocha</span>
-                        <span class="item-price">₹160</span>
-                    </div>
-                </div>
+            <!-- MATCHAS -->
+            <h3 class="subtitle">MATCHAS</h3>
+            <div class="menu-item-row">
+                <span class="item-name">Matcha Cappuccino</span>
+                <span class="item-price">₹299</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Matcha Latte</span>
+                <span class="item-price">₹299</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Mango Cheesecake Iced Matcha Latte</span>
+                <span class="item-price">₹349</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Matcha Affogato</span>
+                <span class="item-price">₹369</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Strawberry Vanilla Iced Matcha Latte</span>
+                <span class="item-price">₹369</span>
             </div>
 
-            <!-- Non-Coffee Beverages -->
-            <div class="category-card">
-                <h3 class="category-title">Non-Coffee Beverages</h3>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <span class="item-name">Masala Tea</span>
-                        <span class="item-price">₹60</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Green Tea</span>
-                        <span class="item-price">₹80</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Lemon Tea</span>
-                        <span class="item-price">₹70</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Fresh Lime Soda</span>
-                        <span class="item-price">₹80</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Fruit Juices</span>
-                        <span class="item-price">₹100</span>
-                    </div>
-                </div>
+            <!-- SIGNATURE ICED LATTES -->
+            <h3 class="subtitle">SIGNATURE ICED LATTES</h3>
+            <div class="menu-item-row">
+                <span class="item-name">Strawberry Cheesecake Iced Latte</span>
+                <span class="item-price">₹269</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Chocolate Cheesecake Iced Latte</span>
+                <span class="item-price">₹269</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Raspberry Cheesecake Iced Latte</span>
+                <span class="item-price">₹269</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Mango Cheesecake Iced Latte</span>
+                <span class="item-price">₹269</span>
+            </div>
+
+            <!-- FILTER COFFEE -->
+            <h3 class="subtitle">FILTER COFFEE</h3>
+            <div class="menu-item-row">
+                <span class="item-name">Araku Filter Coffee</span>
+                <span class="item-price">₹159</span>
+            </div>
+
+            <!-- REFRESHERS / ICED TEA -->
+            <h3 class="subtitle">REFRESHERS / ICED TEA</h3>
+            <div class="menu-item-row">
+                <span class="item-name">Lime Iced Tea</span>
+                <span class="item-price">₹139</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Orange Iced Tea</span>
+                <span class="item-price">₹139</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Iced Cinnamon Tea</span>
+                <span class="item-price">₹149</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Mango Iced Tea</span>
+                <span class="item-price">₹159</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Lychee Iced Tea</span>
+                <span class="item-price">₹159</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Blueberry Iced Tea</span>
+                <span class="item-price">₹159</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Strawberry Iced Tea</span>
+                <span class="item-price">₹159</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Caramel Cinnamon</span>
+                <span class="item-price">₹149</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Passion Heat Mojito</span>
+                <span class="item-price">₹159</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Araku Sunset</span>
+                <span class="item-price">₹169</span>
             </div>
         </section>
 
         <!-- SECTION 2: CHILLERS -->
-        <section id="chillers" class="menu-section">
+        <section id="chillers">
             <h2 class="section-title">CHILLERS</h2>
 
-            <!-- Cold Coffee -->
-            <div class="category-card">
-                <h3 class="category-title">Cold Coffee</h3>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <span class="item-name">Iced Coffee</span>
-                        <span class="item-price">₹140</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Cold Brew</span>
-                        <span class="item-price">₹170</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Iced Latte</span>
-                        <span class="item-price">₹150</span>
-                    </div>
-                </div>
+            <!-- FRAPPUCCINO -->
+            <h3 class="subtitle">FRAPPUCCINO</h3>
+            <div class="menu-item-row">
+                <span class="item-name">Mocha Frappe</span>
+                <span class="item-price">₹209</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Hazelnut Frappe</span>
+                <span class="item-price">₹209</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">White Mocha Frappe</span>
+                <span class="item-price">₹219</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Choco Frappe</span>
+                <span class="item-price">₹219</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Vanilla Frappe</span>
+                <span class="item-price">₹219</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Caramel Frappe</span>
+                <span class="item-price">₹229</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Double Chocochip Frappe</span>
+                <span class="item-price">₹229</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Nutella Frappe</span>
+                <span class="item-price">₹229</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Brownie Fudge Frappe</span>
+                <span class="item-price">₹229</span>
+            </div>
+
+            <!-- SIGNATURE REFRESHERS -->
+            <h3 class="subtitle">SIGNATURE REFRESHERS</h3>
+            <div class="menu-item-row">
+                <span class="item-name">Green Apple Blush</span>
+                <span class="item-price">₹149</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Passion Litchi Punch</span>
+                <span class="item-price">₹149</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Orange Love</span>
+                <span class="item-price">₹159</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Girl in Pink</span>
+                <span class="item-price">₹159</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Boy in Blue</span>
+                <span class="item-price">₹169</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Purple High Heels</span>
+                <span class="item-price">₹169</span>
+            </div>
+
+            <!-- AFFOGATO -->
+            <h3 class="subtitle">AFFOGATO</h3>
+            <div class="menu-item-row">
+                <span class="item-name">Classic Affogato</span>
+                <span class="item-price">₹239</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Hot Chocolate</span>
+                <span class="item-price">₹239</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Hot Chocolate Affogato</span>
+                <span class="item-price">₹249</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Nutella Affogato</span>
+                <span class="item-price">₹249</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Lotus Biscoff Affogato</span>
+                <span class="item-price">₹249</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Pistachio Affogato</span>
+                <span class="item-price">₹259</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Hazelnut Affogato</span>
+                <span class="item-price">₹259</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">White Chocolate Affogato</span>
+                <span class="item-price">₹259</span>
+            </div>
+
+            <!-- BOBA -->
+            <h3 class="subtitle">BOBA</h3>
+            <div class="menu-item-row">
+                <span class="item-name">Berry Mochi Dream</span>
+                <span class="item-price">₹279</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Cinnabee Hug</span>
+                <span class="item-price">₹249</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Brown Sugar Bunny</span>
+                <span class="item-price">₹259</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Salted Caramel Pebble</span>
+                <span class="item-price">₹230</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Mango Momo</span>
+                <span class="item-price">₹250</span>
+            </div>
+
+            <!-- COLD BREWS -->
+            <h3 class="subtitle">COLD BREWS</h3>
+            <div class="menu-item-row">
+                <span class="item-name">Cold Brew White Chocolate Mocha</span>
+                <span class="item-price">₹249</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Vanilla Cream Cold Brew</span>
+                <span class="item-price">₹259</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Bombon Cold Brew</span>
+                <span class="item-price">₹230</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Cold Brew Black Coffee</span>
+                <span class="item-price">₹250</span>
             </div>
         </section>
 
         <!-- SECTION 3: BREADS -->
-        <section id="breads" class="menu-section">
+        <section id="breads">
             <h2 class="section-title">BREADS</h2>
 
-            <!-- Breakfast -->
-            <div class="category-card">
-                <h3 class="category-title">Breakfast</h3>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <span class="item-name">Classic Omelette</span>
-                        <span class="item-price">₹100</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Masala Omelette</span>
-                        <span class="item-price">₹120</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">French Toast</span>
-                        <span class="item-price">₹140</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Pancakes (3 pcs)</span>
-                        <span class="item-price">₹150</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Avocado Toast</span>
-                        <span class="item-price">₹220</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Breakfast Platter</span>
-                        <span class="item-price">₹240</span>
-                    </div>
-                </div>
+            <!-- VEGETARIAN SANDWICHES -->
+            <h3 class="subtitle">VEGETARIAN SANDWICHES</h3>
+            <div class="menu-item-row">
+                <span class="item-name">Fiery Cottage Sandwich</span>
+                <span class="item-price">₹309</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Garden Fresh Sandwich</span>
+                <span class="item-price">₹299</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Greek Mushroom Sandwich</span>
+                <span class="item-price">₹309</span>
             </div>
 
-            <!-- Sandwiches -->
-            <div class="category-card">
-                <h3 class="category-title">Sandwiches</h3>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <span class="item-name">Veg Grilled Sandwich</span>
-                        <span class="item-price">₹140</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Cheese Grilled Sandwich</span>
-                        <span class="item-price">₹160</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Paneer Tikka Sandwich</span>
-                        <span class="item-price">₹180</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Chicken Grilled Sandwich</span>
-                        <span class="item-price">₹200</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Chicken Tikka Sandwich</span>
-                        <span class="item-price">₹220</span>
-                    </div>
-                </div>
+            <!-- NON-VEGETARIAN SANDWICHES -->
+            <h3 class="subtitle">NON-VEGETARIAN SANDWICHES</h3>
+            <div class="menu-item-row">
+                <span class="item-name">Chipotle Jalapeño Chicken Sandwich</span>
+                <span class="item-price">₹329</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Araku Smoked Chicken Sandwich</span>
+                <span class="item-price">₹349</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Avocado Chicken Sandwich</span>
+                <span class="item-price">₹329</span>
             </div>
 
-            <!-- Burgers -->
-            <div class="category-card">
-                <h3 class="category-title">Burgers</h3>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <span class="item-name">Veg Burger</span>
-                        <span class="item-price">₹140</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Paneer Burger</span>
-                        <span class="item-price">₹160</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Chicken Burger</span>
-                        <span class="item-price">₹180</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Chicken Cheese Burger</span>
-                        <span class="item-price">₹200</span>
-                    </div>
-                </div>
+            <!-- SIGNATURE HOUSE PIZZAS -->
+            <h3 class="subtitle">SIGNATURE HOUSE PIZZAS</h3>
+            <div class="menu-item-row">
+                <span class="item-name">Chimichurri Chicken Pizza</span>
+                <span class="item-price">₹459</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Araku Smoked Chicken Pizza</span>
+                <span class="item-price">₹449</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Chicken Tikka Pizza</span>
+                <span class="item-price">₹449</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Smokey Paneer Pizza</span>
+                <span class="item-price">₹429</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Wild Forest Mushroom Pizza</span>
+                <span class="item-price">₹449</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Cheesy Malai Paneer Pizza</span>
+                <span class="item-price">₹409</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Garden Fresh Pizza</span>
+                <span class="item-price">₹429</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Giant House Full Pizza</span>
+                <span class="item-price">₹999</span>
+            </div>
+
+            <!-- PASTA -->
+            <h3 class="subtitle">PASTA</h3>
+            <div class="menu-item-row">
+                <span class="item-name">White Whisper</span>
+                <span class="item-price">₹359</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Charred Kiss</span>
+                <span class="item-price">₹399</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Arrabiata Bliss</span>
+                <span class="item-price">₹359</span>
             </div>
         </section>
 
         <!-- SECTION 4: PLATTERS -->
-        <section id="platters" class="menu-section">
+        <section id="platters">
             <h2 class="section-title">PLATTERS</h2>
 
-            <!-- Pizza -->
-            <div class="category-card">
-                <h3 class="category-title">Pizza</h3>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <span class="item-name">Margherita Pizza</span>
-                        <span class="item-price">₹180</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Veggie Supreme Pizza</span>
-                        <span class="item-price">₹220</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Paneer Tikka Pizza</span>
-                        <span class="item-price">₹240</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Chicken Pizza</span>
-                        <span class="item-price">₹260</span>
-                    </div>
-                </div>
+            <!-- SIGNATURE STEAKS & RICE BOWLS -->
+            <h3 class="subtitle">SIGNATURE STEAKS & RICE BOWLS</h3>
+            <div class="menu-item-row">
+                <span class="item-name">The Umami Affair</span>
+                <span class="item-price">₹409</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Afghani Cream</span>
+                <span class="item-price">₹409</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Kali Mirch</span>
+                <span class="item-price">₹399</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Andhra Wild Gongura Rush</span>
+                <span class="item-price">₹399</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Avocado Chicken Rush</span>
+                <span class="item-price">₹429</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Herby Chicken Feelings</span>
+                <span class="item-price">₹429</span>
             </div>
 
-            <!-- Pasta -->
-            <div class="category-card">
-                <h3 class="category-title">Pasta</h3>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <span class="item-name">Veg Red Sauce Pasta</span>
-                        <span class="item-price">₹160</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Veg White Sauce Pasta</span>
-                        <span class="item-price">₹170</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Chicken Red Sauce Pasta</span>
-                        <span class="item-price">₹200</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Chicken White Sauce Pasta</span>
-                        <span class="item-price">₹210</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Araku House Special Pasta</span>
-                        <span class="item-price">₹280</span>
-                    </div>
-                </div>
+            <!-- BURGERS -->
+            <h3 class="subtitle">BURGERS</h3>
+            <div class="menu-item-row">
+                <span class="item-name">Grilled Chicken Burger</span>
+                <span class="item-price">₹319</span>
             </div>
-
-            <!-- Salads & Bowls -->
-            <div class="category-card">
-                <h3 class="category-title">Salads & Bowls</h3>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <span class="item-name">Garden Fresh Salad</span>
-                        <span class="item-price">₹200</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Mediterranean Bowl</span>
-                        <span class="item-price">₹260</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Quinoa Salad Bowl</span>
-                        <span class="item-price">₹240</span>
-                    </div>
-                </div>
+            <div class="menu-item-row">
+                <span class="item-name">Med Chicken Burger</span>
+                <span class="item-price">₹309</span>
             </div>
-
-            <!-- Desserts -->
-            <div class="category-card">
-                <h3 class="category-title">Desserts</h3>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <span class="item-name">Signature Chocolate Cake</span>
-                        <span class="item-price">₹180</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Tiramisu</span>
-                        <span class="item-price">₹160</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Cheesecake</span>
-                        <span class="item-price">₹170</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Brownie Sundae</span>
-                        <span class="item-price">₹190</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Artisan Tart</span>
-                        <span class="item-price">₹150</span>
-                    </div>
-                </div>
+            <div class="menu-item-row">
+                <span class="item-name">Crunch Veg Stack</span>
+                <span class="item-price">₹309</span>
             </div>
-
-            <!-- Snacks -->
-            <div class="category-card">
-                <h3 class="category-title">Snacks</h3>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <span class="item-name">French Fries</span>
-                        <span class="item-price">₹100</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Garlic Bread</span>
-                        <span class="item-price">₹120</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Nachos with Salsa</span>
-                        <span class="item-price">₹140</span>
-                    </div>
-                    <div class="menu-item">
-                        <span class="item-name">Spring Rolls</span>
-                        <span class="item-price">₹130</span>
-                    </div>
-                </div>
+            <div class="menu-item-row">
+                <span class="item-name">Moroccan Mystique Paneer</span>
+                <span class="item-price">₹309</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Veg Tempest</span>
+                <span class="item-price">₹309</span>
+            </div>
+            <div class="menu-item-row">
+                <span class="item-name">Crispy Chick Filla</span>
+                <span class="item-price">₹319</span>
             </div>
         </section>
+
+        <!-- Footer Note -->
+        <div class="text-center my-5">
+            <p class="text-muted fst-italic">All prices are inclusive of taxes. Menu items and prices are subject to change.</p>
+            <p class="text-muted mt-2">Special dietary requirements? Let us know and we'll do our best to accommodate you.</p>
+        </div>
 
     </div>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-note">
-            <p><strong>Note:</strong> All prices are inclusive of taxes. Menu items and prices are subject to change.</p>
-            <p style="margin-top: 0.5rem;">Special dietary requirements? Let us know and we'll do our best to accommodate you.</p>
-        </div>
-        
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Araku House</h3>
-                <p>Cafe & Organic Store</p>
-                <p>"Brew Local, Take Global"</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h3>Araku House</h3>
+                    <p>Cafe & Organic Store</p>
+                    <p>"Brew Local, Take Global"</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h3>Visit Us</h3>
+                    <p>Araku House Cafe</p>
+                    <p>Open Daily: 8:00 AM - 10:00 PM</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h3>Contact</h3>
+                    <p>Email: hello@arakuhouse.com</p>
+                    <p><a href="https://www.instagram.com/araku.house" target="_blank">Instagram: @araku.house</a></p>
+                </div>
             </div>
-            
-            <div class="footer-section">
-                <h3>Visit Us</h3>
-                <p>Araku House Cafe</p>
-                <p>Open Daily: 8:00 AM - 10:00 PM</p>
+            <div class="text-center mt-4 pt-3 border-top border-secondary">
+                <p class="text-white-50">&copy; 2025 Araku House. All rights reserved.</p>
             </div>
-            
-            <div class="footer-section">
-                <h3>Contact</h3>
-                <p>Email: hello@arakuhouse.com</p>
-                <p><a href="https://www.instagram.com/araku.house" target="_blank">Instagram: @araku.house</a></p>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 Araku House. All rights reserved.</p>
         </div>
     </footer>
 
@@ -779,10 +791,34 @@
             });
         });
 
+        // Active section highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.quick-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
         // Scroll to top on page load
         window.addEventListener('load', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
