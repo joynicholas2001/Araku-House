@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { Button } from "../components/ui/button";
@@ -11,6 +12,8 @@ import plateIcon from "@/assets/menu/plate.svg";
 import dessertIcon from "@/assets/menu/dessert.svg";
 
 const Menu = () => {
+  const navigate = useNavigate();
+  
   const coffeeItems = [
     { 
       name: "Araku Signature Brew", 
@@ -279,7 +282,7 @@ const Menu = () => {
         <div className="text-center mt-12 animate-fade-in">
           <Button
             size="lg"
-            onClick={() => window.location.href = '/menu'}
+            onClick={() => navigate('/menu')}
             className="text-lg bg-accent hover:bg-accent/90 text-white px-8 py-6 shadow-strong"
           >
             View Complete Menu
