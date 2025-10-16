@@ -27,10 +27,30 @@ const Menu = () => {
       featured: true,
       image: pastaImage
     },
-    { name: "Avocado Toast", description: "Sourdough, fresh avocado, cherry tomatoes, feta", price: "220", image: plateIcon },
-    { name: "Mediterranean Bowl", description: "Quinoa, hummus, roasted vegetables, tahini dressing", price: "260", image: plateIcon },
-    { name: "Breakfast Platter", description: "Organic eggs, artisan bread, seasonal fruits", price: "240", image: plateIcon },
-    { name: "Garden Fresh Salad", description: "Locally sourced greens with house dressing", price: "200", image: plateIcon },
+    { 
+      name: "Avocado Toast", 
+      description: "Sourdough, fresh avocado, cherry tomatoes, feta", 
+      price: "220", 
+      image: plateIcon 
+    },
+    { 
+      name: "Mediterranean Bowl", 
+      description: "Quinoa, hummus, roasted vegetables, tahini dressing", 
+      price: "260", 
+      image: plateIcon 
+    },
+    { 
+      name: "Breakfast Platter", 
+      description: "Organic eggs, artisan bread, seasonal fruits", 
+      price: "240", 
+      image: plateIcon 
+    },
+    { 
+      name: "Garden Fresh Salad", 
+      description: "Locally sourced greens with house dressing", 
+      price: "200", 
+      image: plateIcon 
+    },
   ];
 
   const dessertItems = [
@@ -41,10 +61,30 @@ const Menu = () => {
       featured: true,
       image: dessertImage
     },
-    { name: "Tiramisu", description: "Classic Italian dessert with coffee-soaked layers", price: "160", image: dessertIcon },
-    { name: "Cheesecake", description: "Creamy New York style with berry compote", price: "170", image: dessertIcon },
-    { name: "Artisan Tart", description: "Seasonal fruit on buttery pastry", price: "150", image: dessertIcon },
-    { name: "Brownie Sundae", description: "Warm brownie with organic vanilla ice cream", price: "190", image: dessertIcon },
+    { 
+      name: "Tiramisu", 
+      description: "Classic Italian dessert with coffee-soaked layers", 
+      price: "160", 
+      image: dessertIcon 
+    },
+    { 
+      name: "Cheesecake", 
+      description: "Creamy New York style with berry compote", 
+      price: "170", 
+      image: dessertIcon 
+    },
+    { 
+      name: "Artisan Tart", 
+      description: "Seasonal fruit on buttery pastry", 
+      price: "150", 
+      image: dessertIcon 
+    },
+    { 
+      name: "Brownie Sundae", 
+      description: "Warm brownie with organic vanilla ice cream", 
+      price: "190", 
+      image: dessertIcon 
+    },
   ];
 
   return (
