@@ -1,5 +1,6 @@
 import React from "react";
 import coffeeImage from "@/assets/coffee-detail.jpg";
+import heroCafe from "@/assets/hero-cafe.jpg";
 
 const About = () => {
   return (
@@ -26,14 +27,22 @@ const About = () => {
               </p>
             </div>
           </div>
-          <div className="animate-fade-in">
+          <div className="animate-fade-in grid gap-4">
             <img
               src={coffeeImage}
               alt="Artisan coffee at Araku House"
               loading="lazy"
               decoding="async"
               fetchPriority="low"
-              className="rounded-2xl shadow-strong w-full h-64 md:h-[500px] object-cover"
+              className="rounded-2xl shadow-strong w-full h-64 md:h-[350px] object-cover"
+            />
+            <img
+              src={heroCafe}
+              alt="Araku House cafe interior"
+              loading="lazy"
+              decoding="async"
+              fetchPriority="low"
+              className="rounded-2xl shadow-strong w-full h-48 md:h-[250px] object-cover"
             />
           </div>
         </div>

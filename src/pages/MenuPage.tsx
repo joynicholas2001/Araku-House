@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../components/Layout";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 
 const MenuPage = () => {
+  // Scroll to top when the page loads
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
+  const preparationMessage = "All our dishes are freshly prepared after you order. Please allow a minimum of 20 minutes for service so you can enjoy your food hot and at its best.";
   const menuCategories = [
     {
       title: "Cappuccino",
@@ -150,7 +156,7 @@ const MenuPage = () => {
   return (
     <Layout>
       <Navigation />
-      <main className="min-h-screen bg-background">
+      <main id="menu-top" className="min-h-screen bg-background">
         {/* Hero Section */}
         <section className="relative py-20 md:py-32 bg-primary/5">
           <div className="container mx-auto px-4">
@@ -162,7 +168,7 @@ const MenuPage = () => {
                 Crafted with love, sourced with care, served with pride
               </p>
               <p className="text-lg text-foreground/70">
-                Experience the finest organic coffee from Araku Valley and delicious, freshly prepared dishes
+                {preparationMessage}
               </p>
             </div>
           </div>
