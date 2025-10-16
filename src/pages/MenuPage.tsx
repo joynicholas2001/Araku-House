@@ -189,9 +189,6 @@ const MenuPage = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-primary">
                 Our Menu
               </h1>
-              <p className="text-xl text-muted-foreground mb-4">
-                Crafted with love, sourced with care, served with pride
-              </p>
               <p className="text-lg text-foreground/70">
                 {preparationMessage}
               </p>
