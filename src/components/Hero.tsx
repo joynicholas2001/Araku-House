@@ -1,7 +1,7 @@
 import React from "react";
 // Update the import path below if your Button component is located elsewhere
 import { Button } from "./ui/button";
-import heroCafeBg from "@/assets/hero-cafe.jpg";
+import cappuccinoBg from "@/assets/coffee-detail.jpg";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -14,11 +14,11 @@ const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
 
-      {/* Background: coffee shop atmosphere with enhanced overlay for text visibility */}
+      {/* Background: beautiful cappuccino/coffee image with overlay for text visibility */}
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${heroCafeBg})` }}
+          style={{ backgroundImage: `url(${cappuccinoBg})` }}
           aria-hidden
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70" aria-hidden />
