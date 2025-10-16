@@ -1,15 +1,37 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
       setIsMobileMenuOpen(false);
+    }
+  };
+
+  const handleNavigation = (item: { id?: string; path?: string; type: string }) => {
+    if (item.type === "link" && item.path) {
+      navigate(item.path);
+      setIsMobileMenuOpen(false);
+    } else if (item.id) {
+      // If we're on the menu page, navigate to home first, then scroll
+      if (location.pathname === "/menu") {
+        navigate("/");
+        // Wait for navigation to complete, then scroll
+        setTimeout(() => {
+          scrollToSection(item.id!);
+        }, 100);
+      } else {
+        // Already on home page, just scroll
+        scrollToSection(item.id);
+      }
     }
   };
 
@@ -32,7 +54,11 @@ const Navigation = () => {
             href="#home"
             onClick={(e) => {
               e.preventDefault();
-              scrollToSection("home");
+              if (location.pathname === "/menu") {
+                navigate("/");
+              } else {
+                scrollToSection("home");
+              }
             }}
             className="flex items-center gap-3 text-foreground hover:text-accent transition-colors"
             aria-label="Araku House Home"
@@ -47,6 +73,10 @@ const Navigation = () => {
                 <a
                   key={item.path}
                   href={item.path}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavigation(item);
+                  }}
                   className="text-foreground hover:text-accent transition-colors font-medium"
                 >
                   {item.label}
@@ -57,7 +87,7 @@ const Navigation = () => {
                   href={`#${item.id}`}
                   onClick={(e) => {
                     e.preventDefault();
-                    if (item.id) scrollToSection(item.id);
+                    handleNavigation(item);
                   }}
                   className="text-foreground hover:text-accent transition-colors font-medium"
                 >
@@ -89,8 +119,11 @@ const Navigation = () => {
                 <a
                   key={item.path}
                   href={item.path}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavigation(item);
+                  }}
                   className="block w-full text-left py-3 text-foreground hover:text-accent transition-colors font-medium"
-                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}
                 </a>
@@ -100,7 +133,7 @@ const Navigation = () => {
                   href={`#${item.id}`}
                   onClick={(e) => {
                     e.preventDefault();
-                    if (item.id) scrollToSection(item.id);
+                    handleNavigation(item);
                   }}
                   className="block w-full text-left py-3 text-foreground hover:text-accent transition-colors font-medium"
                 >
