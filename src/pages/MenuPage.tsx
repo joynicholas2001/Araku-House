@@ -13,53 +13,28 @@ const MenuPage = () => {
   const preparationMessage = "All our dishes are freshly prepared after you order. Please allow a minimum of 20 minutes for service so you can enjoy your food hot and at its best.";
   const menuCategories = [
     {
-      title: "Cappuccino",
+      title: "Coffee",
       items: [
         { name: "Cappuccino", price: "₹120" },
         { name: "Hazelnut Cappuccino", price: "₹140" },
         { name: "Caramel Cappuccino", price: "₹140" },
         { name: "Vanilla Cappuccino", price: "₹140" },
-      ],
-    },
-    {
-      title: "Latte",
-      items: [
         { name: "Cafe Latte", price: "₹130" },
         { name: "Hazelnut Latte", price: "₹150" },
         { name: "Caramel Latte", price: "₹150" },
         { name: "Vanilla Latte", price: "₹150" },
-      ],
-    },
-    {
-      title: "Espresso",
-      items: [
-        { name: "Single Shot", price: "₹100" },
-        { name: "Double Shot", price: "₹130" },
+        { name: "Espresso Single Shot", price: "₹100" },
+        { name: "Espresso Double Shot", price: "₹130" },
         { name: "Americano", price: "₹120" },
-      ],
-    },
-    {
-      title: "Frappuccino",
-      items: [
         { name: "Classic Coffee Frappuccino", price: "₹160" },
         { name: "Mocha Frappuccino", price: "₹180" },
         { name: "Caramel Frappuccino", price: "₹180" },
         { name: "Vanilla Frappuccino", price: "₹180" },
         { name: "Hazelnut Frappuccino", price: "₹180" },
-      ],
-    },
-    {
-      title: "Hot Chocolate & Mochas",
-      items: [
         { name: "Classic Hot Chocolate", price: "₹140" },
         { name: "White Hot Chocolate", price: "₹150" },
         { name: "Cafe Mocha", price: "₹150" },
         { name: "White Cafe Mocha", price: "₹160" },
-      ],
-    },
-    {
-      title: "Cold Coffee",
-      items: [
         { name: "Iced Coffee", price: "₹140" },
         { name: "Cold Brew", price: "₹170" },
         { name: "Iced Latte", price: "₹150" },
@@ -73,6 +48,17 @@ const MenuPage = () => {
         { name: "Lemon Tea", price: "₹70" },
         { name: "Fresh Lime Soda", price: "₹80" },
         { name: "Fruit Juices", price: "₹100" },
+      ],
+    },
+    {
+      title: "Breakfast",
+      items: [
+        { name: "Classic Omelette", price: "₹100" },
+        { name: "Masala Omelette", price: "₹120" },
+        { name: "French Toast", price: "₹140" },
+        { name: "Pancakes (3 pcs)", price: "₹150" },
+        { name: "Avocado Toast", price: "₹220" },
+        { name: "Breakfast Platter", price: "₹240" },
       ],
     },
     {
@@ -111,17 +97,6 @@ const MenuPage = () => {
         { name: "Chicken Red Sauce Pasta", price: "₹200" },
         { name: "Chicken White Sauce Pasta", price: "₹210" },
         { name: "Araku House Special Pasta", price: "₹280" },
-      ],
-    },
-    {
-      title: "Breakfast",
-      items: [
-        { name: "Classic Omelette", price: "₹100" },
-        { name: "Masala Omelette", price: "₹120" },
-        { name: "French Toast", price: "₹140" },
-        { name: "Pancakes (3 pcs)", price: "₹150" },
-        { name: "Avocado Toast", price: "₹220" },
-        { name: "Breakfast Platter", price: "₹240" },
       ],
     },
     {
