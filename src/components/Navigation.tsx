@@ -14,11 +14,11 @@ const Navigation = () => {
   };
 
   const navItems = [
-    { label: "Home", id: "home" },
-    { label: "About", id: "about" },
-    { label: "Menu", id: "menu" },
-    { label: "Events", id: "events" },
-    { label: "Visit Us", id: "contact" },
+    { label: "Home", id: "home", type: "scroll" },
+    { label: "About", id: "about", type: "scroll" },
+    { label: "Our Menu", path: "/menu", type: "link" },
+    { label: "Events", id: "events", type: "scroll" },
+    { label: "Visit Us", id: "contact", type: "scroll" },
   ];
 
   return (
@@ -43,17 +43,27 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(item.id);
-                }}
-                className="text-foreground hover:text-accent transition-colors font-medium"
-              >
-                {item.label}
-              </a>
+              item.type === "link" && item.path ? (
+                <a
+                  key={item.path}
+                  href={item.path}
+                  className="text-foreground hover:text-accent transition-colors font-medium"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (item.id) scrollToSection(item.id);
+                  }}
+                  className="text-foreground hover:text-accent transition-colors font-medium"
+                >
+                  {item.label}
+                </a>
+              )
             ))}
           </div>
 
@@ -75,17 +85,28 @@ const Navigation = () => {
         {isMobileMenuOpen && (
           <div id="mobile-menu" className="md:hidden mt-4 py-4 border-t border-border animate-slide-up">
             {navItems.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(item.id);
-                }}
-                className="block w-full text-left py-3 text-foreground hover:text-accent transition-colors font-medium"
-              >
-                {item.label}
-              </a>
+              item.type === "link" && item.path ? (
+                <a
+                  key={item.path}
+                  href={item.path}
+                  className="block w-full text-left py-3 text-foreground hover:text-accent transition-colors font-medium"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (item.id) scrollToSection(item.id);
+                  }}
+                  className="block w-full text-left py-3 text-foreground hover:text-accent transition-colors font-medium"
+                >
+                  {item.label}
+                </a>
+              )
             ))}
           </div>
         )}
