@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 // Update the import path below if your Button component is located elsewhere
 import { Button } from "./ui/button";
 import cappuccinoBg from "@/assets/coffee-detail.jpg";
@@ -10,6 +11,8 @@ const Hero = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const navigate = useNavigate();
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -44,7 +47,7 @@ const Hero = () => {
           <Button
             variant="outline"
             size="lg"
-            onClick={() => scrollToSection("menu")}
+            onClick={() => navigate("/menu")}
             className="text-lg bg-black/30 backdrop-blur-sm border-white/60 text-white hover:bg-white/20 hover:border-white shadow-xl"
           >
             View Menu
